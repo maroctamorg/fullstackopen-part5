@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Blog from './Blog'
 import blogService from '../services/blogs'
 
-const Blogs = () => {
+const Blogs = ({ notify }) => {
     const [blogs, setBlogs] = useState([])
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
@@ -24,9 +24,10 @@ const Blogs = () => {
         setTitle('')
         setAuthor('')
         setUrl('')
+        notify(`a new blog ${newBlog.title} by ${newBlog.author} added`, 'success')
     }
     catch (exception) {
-        console.log('failed to create blog: ', exception)
+        notify('unable to add blog', 'error')
     }
   }
 
