@@ -8,14 +8,14 @@ const App = () => {
     const [user, setUser] = useState(null)
 
     const TYPE = {
-      ERROR: "error",
-      SUCCESS: "success"
+        ERROR: 'error',
+        SUCCESS: 'success'
     }
-    const [ notification, setNotification ] = useState( {message: null, type: TYPE.ERROR})
-  
+    const [ notification, setNotification ] = useState( { message: null, type: TYPE.ERROR })
+
     const updateNotification = (message, type) => {
-        setNotification( {message: message, type: type} )
-        setTimeout( () => { setNotification( {message: null, type: null} ) }, 5000)
+        setNotification( { message: message, type: type } )
+        setTimeout( () => { setNotification( { message: null, type: null } ) }, 5000)
     }
 
     const logout = () => {
@@ -37,12 +37,12 @@ const App = () => {
             <Notification message={notification.message} type={notification.type} />
             {
                 user === null
-                ? <Login setUser={setUser} notify={updateNotification} />
-                : <div>
-                    <p>{user.username} logged-in</p>
-                    <button onClick={logout}>logout</button>
-                    <Blogs notify={updateNotification} />
-                </div>
+                    ? <Login setUser={setUser} notify={updateNotification} />
+                    : <div>
+                        <p>{user.username} logged-in</p>
+                        <button onClick={logout}>logout</button>
+                        <Blogs notify={updateNotification} />
+                    </div>
             }
         </div>
     )

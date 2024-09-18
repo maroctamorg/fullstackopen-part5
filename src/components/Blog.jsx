@@ -1,4 +1,4 @@
-import Toggable from "./Toggable"
+import Toggable from './Toggable'
 import blogService from '../services/blogs'
 
 const Blog = ({ blogs, setBlogs, blog, notify }) => {
@@ -43,7 +43,7 @@ const Blog = ({ blogs, setBlogs, blog, notify }) => {
                     <button onClick={remove}>remove</button>
                 </p>
             </Toggable>
-        </div>  
+        </div>
     )
 }
 export default Blog

@@ -8,13 +8,12 @@ const Blogs = ({ notify }) => {
     const [blogs, setBlogs] = useState([])
 
     useEffect(() => {
-      blogService.getAll().then(blogs =>
-        setBlogs( blogs )
-      )
+        blogService.getAll().then(blogs =>
+            setBlogs( blogs )
+        )
     }, [])
 
     useEffect(() => {
-        console.log('sorting blogs')
         const newBlogs = blogs
         setBlogs(newBlogs.sort((a, b) => b.likes - a.likes + 1))
     }, [blogs])
@@ -22,13 +21,13 @@ const Blogs = ({ notify }) => {
     const blogFormRef = useRef()
 
     return (
-      <div>
-          <h2>blogs</h2>
-          { blogs.map(blog => <Blog key={blog.id} blog={blog} notify={notify} blogs={blogs} setBlogs={setBlogs}/>) }
-          <Toggable buttonLabel="create new blog" ref={blogFormRef}>
-              <BlogForm notify={notify} setBlogs={setBlogs} blogs={blogs} blogFormRef={blogFormRef} />
-          </Toggable>
-      </div>
+        <div>
+            <h2>blogs</h2>
+            { blogs.map(blog => <Blog key={blog.id} blog={blog} notify={notify} blogs={blogs} setBlogs={setBlogs}/>) }
+            <Toggable buttonLabel="create new blog" ref={blogFormRef}>
+                <BlogForm notify={notify} setBlogs={setBlogs} blogs={blogs} blogFormRef={blogFormRef} />
+            </Toggable>
+        </div>
     )
 }
 
