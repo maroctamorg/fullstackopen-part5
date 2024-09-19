@@ -15,6 +15,9 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm ci
+    - name: Install dependencies
+      run: npm ci
+      working-directory: ./e2etests
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
       working-directory: ./e2etests
