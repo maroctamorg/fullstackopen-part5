@@ -15,16 +15,15 @@ const Blogs = ({ notify }) => {
 
     useEffect(() => {
         const newBlogs = blogs
-        setBlogs(newBlogs.sort((a, b) => b.likes - a.likes + 1))
+        setBlogs(newBlogs.sort((a, b) => b.likes - a.likes - 1))
     }, [blogs])
 
     const blogFormRef = useRef()
 
-    const likeBlog = async (blog) => {
+    const likeBlog = async (blogId) => {
         try {
-            const updatedBlog = { ...blog, likes: blog.likes + 1 }
-            await blogService.update(blog.id, updatedBlog)
-            setBlogs(blogs.map(b => b.id === blog.id ? updatedBlog : b))
+            setBlogs(blogs.map(b => b.id === blogId ? {...b, likes: b.likes+1} : b))
+            await blogService.update(blog.id, blog)
         }
         catch (exception) {
             notify(`unable to like blog: ${exception.message}`, 'error')

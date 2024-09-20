@@ -1,5 +1,4 @@
 import Toggable from './Toggable'
-import blogService from '../services/blogs'
 
 const Blog = ({ blog, like, remove }) => {
     const blogStyle = {
@@ -16,7 +15,7 @@ const Blog = ({ blog, like, remove }) => {
             <Toggable buttonLabel="view">
                 <p className='blog-details'>
                     {blog.url} <br />
-                    likes {blog.likes} <button onClick={() => like(blog)}>like</button> <br />
+                    likes <span data-testid='number-of-likes'>{blog.likes}</span> <button onClick={() => like(blog.id)}>like</button> <br />
                     {blog.user.username} <br />
                     <button onClick={() => remove(blog)}>remove</button>
                 </p>
